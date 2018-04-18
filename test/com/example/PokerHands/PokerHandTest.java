@@ -54,5 +54,12 @@ public class PokerHandTest {
 		assertTrue(hand3.hasQuad());
 		assertFalse(hand2.hasQuad());
 	}
+	
+	
+	@Test
+	public void flushCheck(){
+		assertTrue(hand0.hasFlush());
+		assertFalse(hand1.hasFlush());
+	}
 
 }

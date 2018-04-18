@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class PokerHand {
 	
-	int cardValues[];
+	private int cardValues[];
+	private boolean hasFlush;
 	
 	public PokerHand(String hand){
 		
@@ -16,6 +17,8 @@ public class PokerHand {
 		}
 		
 		Arrays.sort(cardValues);
+		
+		hasFlush = hand.charAt(1) == hand.charAt(4) && hand.charAt(1) == hand.charAt(7) && hand.charAt(1) == hand.charAt(10) && hand.charAt(1) == hand.charAt(13); 
 	}
 	
 	public int highCard(){
@@ -57,5 +60,9 @@ public class PokerHand {
 	public boolean hasQuad(){
 		return (cardValues[0] == cardValues[1] && cardValues[0] == cardValues[2] && cardValues[0] == cardValues[3]) || 
 				(cardValues[1] == cardValues[2] && cardValues[1] == cardValues[3] && cardValues[1] == cardValues[4]);
+	}
+	
+	public boolean hasFlush(){
+		return this.hasFlush;
 	}
 }
