@@ -49,4 +49,13 @@ public class PokerHand {
 		}
 		return true;
 	}
+	
+	public boolean hasFullHouse(){
+		return this.hasTriple() && cardValues[0] == cardValues[1] && cardValues[3] == cardValues[4];
+	}
+	
+	public boolean hasQuad(){
+		return (cardValues[0] == cardValues[1] && cardValues[0] == cardValues[2] && cardValues[0] == cardValues[3]) || 
+				(cardValues[1] == cardValues[2] && cardValues[1] == cardValues[3] && cardValues[1] == cardValues[4]);
+	}
 }
