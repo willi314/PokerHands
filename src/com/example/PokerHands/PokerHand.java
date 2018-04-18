@@ -21,4 +21,13 @@ public class PokerHand {
 	public int highCard(){
 		return cardValues[4];
 	}
+	
+	public boolean hasPair(){
+		for(int i = 0; i < 4; i++){
+			for(int j = i + 1; j < 5; j++){
+				if(cardValues[i] == cardValues[j]) return true;
+			}
+		}
+		return false;
+	}
 }
