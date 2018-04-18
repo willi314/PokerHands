@@ -15,14 +15,16 @@ public class PokerHandTest {
 	@Before
     public void init() {
 		hand0 = new PokerHand("2S 3S 5S 4S 6S");
-		hand1 = new PokerHand("7H 7D 9S 8H 8D");
+		hand1 = new PokerHand("QH QD JS KH KD");
 		hand2 = new PokerHand("7H 7D 7S 8H 8D");
-		hand3 = new PokerHand("7H 7D 7S 7C 8D");
+		hand3 = new PokerHand("7H 7D 7S 7C AD");
     }
 	
 	@Test
 	public void highCardTest() {
 		assertEquals(6, hand0.highCard());
+		assertEquals(13, hand1.highCard());
+		assertEquals(14, hand3.highCard());
 	}
 	
 	@Test

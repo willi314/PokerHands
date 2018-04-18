@@ -13,7 +13,16 @@ public class PokerHand {
 		
 		for(int i = 0; i < 13; i+=3){
 			char cardValue = hand.charAt(i);
-			cardValues[i/3] = cardValue - '0';
+			if(cardValue == 'J')
+				cardValues[i/3] = 11;
+			else if(cardValue == 'Q')
+				cardValues[i/3] = 12;
+			else if(cardValue == 'K')
+				cardValues[i/3] = 13;
+			else if(cardValue == 'A')
+				cardValues[i/3] = 14;
+			else
+				cardValues[i/3] = cardValue - '0';
 		}
 		
 		Arrays.sort(cardValues);
