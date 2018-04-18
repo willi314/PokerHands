@@ -13,7 +13,7 @@ public class PokerHandTest {
 	@Before
     public void init() {
 		hand0 = new PokerHand("2S 3S 4S 5S 6S");
-		hand1 = new PokerHand("2H 3H 3D 5H 6H");
+		hand1 = new PokerHand("7H 7D 9S 8H 8D");
     }
 	
 	@Test
@@ -22,9 +22,9 @@ public class PokerHandTest {
 	}
 	
 	@Test
-	public void pairTest(){
-		assertFalse(hand0.hasPair());
-		assertTrue(hand1.hasPair());
+	public void pairsTest(){
+		assertEquals(0, hand0.hasPairs());
+		assertEquals(2, hand1.hasPairs());
 	}
 
 }

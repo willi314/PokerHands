@@ -22,12 +22,13 @@ public class PokerHand {
 		return cardValues[4];
 	}
 	
-	public boolean hasPair(){
+	public int hasPairs(){
+		int numberOfPairs = 0;
 		for(int i = 0; i < 4; i++){
 			for(int j = i + 1; j < 5; j++){
-				if(cardValues[i] == cardValues[j]) return true;
+				if(cardValues[i] == cardValues[j]) numberOfPairs++;
 			}
 		}
-		return false;
+		return numberOfPairs;
 	}
 }
