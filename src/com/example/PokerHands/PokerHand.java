@@ -2,10 +2,11 @@ package com.example.PokerHands;
 
 import java.util.Arrays;
 
-public class PokerHand {
+public class PokerHand implements Comparable<PokerHand>{
 	
 	private int cardValues[];
 	private boolean hasFlush;
+	private int powerLevel;
 	
 	public PokerHand(String hand){
 		
@@ -27,7 +28,25 @@ public class PokerHand {
 		
 		Arrays.sort(cardValues);
 		
-		hasFlush = hand.charAt(1) == hand.charAt(4) && hand.charAt(1) == hand.charAt(7) && hand.charAt(1) == hand.charAt(10) && hand.charAt(1) == hand.charAt(13); 
+		hasFlush = hand.charAt(1) == hand.charAt(4) && hand.charAt(1) == hand.charAt(7) && hand.charAt(1) == hand.charAt(10) && hand.charAt(1) == hand.charAt(13);
+		
+		powerLevel = this.getInitialPowerLevel();
+	}
+	
+	private int getInitialPowerLevel(){
+		if(hasFlush && this.hasStraight()) return 8;
+		if(this.hasQuad()) return 7;
+		if(this.hasFullHouse()) return 6;
+		if(hasFlush) return 5;
+		if(this.hasStraight()) return 4;
+		if(this.hasTriple()) return 3;
+		if(this.hasPairs() == 2) return 2;
+		if(this.hasPairs() == 1) return 1;
+		return 0;
+	}
+	
+	public int getPowerLevel(){
+		return this.powerLevel;
 	}
 	
 	public int highCard(){
@@ -74,4 +93,12 @@ public class PokerHand {
 	public boolean hasFlush(){
 		return this.hasFlush;
 	}
+
+	@Override
+	public int compareTo(PokerHand hand1) {
+		if(this.powerLevel > hand1.getPowerLevel()) return 1;
+		if(this.powerLevel < hand1.getPowerLevel()) return -1;
+		return 0;
+	}
+	
 }

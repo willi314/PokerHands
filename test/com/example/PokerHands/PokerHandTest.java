@@ -11,6 +11,10 @@ public class PokerHandTest {
 	PokerHand hand1;
 	PokerHand hand2;
 	PokerHand hand3;
+	PokerHand hand4;
+	PokerHand hand5;
+	PokerHand hand6;
+	PokerHand hand7;
 	
 	@Before
     public void init() {
@@ -18,6 +22,10 @@ public class PokerHandTest {
 		hand1 = new PokerHand("QH QD JS KH KD");
 		hand2 = new PokerHand("7H 7D 7S 8H 8D");
 		hand3 = new PokerHand("7H 7D 7S 7C AD");
+		hand4 = new PokerHand("2H 3H 4H 6H 5H");
+		hand5 = new PokerHand("QH QD AS KH KD");
+		hand6 = new PokerHand("2H 5D 7H 9H AH");
+		hand7 = new PokerHand("2D 5C 7D 9H KD");
     }
 	
 	@Test
@@ -62,6 +70,13 @@ public class PokerHandTest {
 	public void flushCheck(){
 		assertTrue(hand0.hasFlush());
 		assertFalse(hand1.hasFlush());
+	}
+	
+	public void compareHandsOfDifferentLevels(){
+		assertEquals(1, hand0.compareTo(hand1));
+		assertEquals(-1, hand2.compareTo(hand3));
+		assertEquals(0, hand4.compareTo(hand0));
+		assertEquals(1, hand6.compareTo(hand7));
 	}
 
 }
