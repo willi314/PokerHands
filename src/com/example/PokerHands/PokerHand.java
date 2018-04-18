@@ -31,4 +31,13 @@ public class PokerHand {
 		}
 		return numberOfPairs;
 	}
+	
+	public boolean hasTriple(){
+		for(int i = 0; i < 3; i++){
+			for(int j = i + 1; j < 5; j++){
+				if(cardValues[i] == cardValues[j] && cardValues[i] == cardValues[j + 1]) return true;
+			}
+		}
+		return false;
+	}
 }
