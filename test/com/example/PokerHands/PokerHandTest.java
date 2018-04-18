@@ -13,7 +13,7 @@ public class PokerHandTest {
 	
 	@Before
     public void init() {
-		hand0 = new PokerHand("2S 3S 4S 5S 6S");
+		hand0 = new PokerHand("2S 3S 5S 4S 6S");
 		hand1 = new PokerHand("7H 7D 9S 8H 8D");
 		hand2 = new PokerHand("7H 7D 7S 8H 8D");
     }
@@ -33,6 +33,12 @@ public class PokerHandTest {
 	public void threeOfAKindTest(){
 		assertFalse(hand0.hasTriple());
 		assertTrue(hand2.hasTriple());
+	}
+	
+	@Test
+	public void straightCheck(){
+		assertTrue(hand0.hasStraight());
+		assertFalse(hand1.hasStraight());
 	}
 
 }

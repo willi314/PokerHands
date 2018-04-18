@@ -40,4 +40,13 @@ public class PokerHand {
 		}
 		return false;
 	}
+	
+	public boolean hasStraight(){
+		for(int i = 0; i < 4; i++){
+			if((cardValues[i] + 1) != cardValues[i+1]){
+				return false;
+			}
+		}
+		return true;
+	}
 }
