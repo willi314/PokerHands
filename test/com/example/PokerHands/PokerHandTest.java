@@ -96,13 +96,14 @@ public class PokerHandTest {
 	@Test
 	public void compareHandsOfSameLevels(){
 		assertEquals(1, hand6.compareTo(hand7));
-		//assertEquals(1, hand14.compareTo(hand13));
-		//assertEquals(1, hand8.compareTo(hand0));
+		assertEquals(1, hand14.compareTo(hand13));
+		assertEquals(1, hand9.compareTo(hand1));
 		//assertEquals(1, hand10.compareTo(hand2));
 		//assertEquals(1, hand11.compareTo(hand3));
 		//assertEquals(1, hand12.compareTo(hand1));
-		//assertEquals(1, hand9.compareTo(hand1));
+		
 		//assertEquals(0, hand4.compareTo(hand0));
+		//assertEquals(1, hand8.compareTo(hand0));
 	}
 
 }

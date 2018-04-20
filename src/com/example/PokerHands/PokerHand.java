@@ -103,6 +103,8 @@ public class PokerHand implements Comparable<PokerHand>{
 		if(this.powerLevel > hand1.getPowerLevel()) return 1;
 		if(this.powerLevel < hand1.getPowerLevel()) return -1;
 		if(this.powerLevel == 0) return this.compareHighCards(hand1);
+		if(this.powerLevel == 1) return this.compareSinglePairs(hand1);
+		if(this.powerLevel == 2) return this.compareDoublePairs(hand1);
 		return 0;
 	}
 	
@@ -116,6 +118,40 @@ public class PokerHand implements Comparable<PokerHand>{
 		if(this.cardValues[2] < hand1CardValues[2]) return -1;
 		if(this.cardValues[1] > hand1CardValues[1]) return 1;
 		if(this.cardValues[1] < hand1CardValues[1]) return -1;
+		if(this.cardValues[0] > hand1CardValues[0]) return 1;
+		if(this.cardValues[0] < hand1CardValues[0]) return -1;
+		return 0;
+	}
+	
+	public int compareSinglePairs(PokerHand hand1){
+		int hand1CardValues[] = hand1.cardValues();
+		int pairValue0 = 0;
+		int pairValue1 = 0;
+		for(int i = 0; i < 4; i++){
+			for(int j = i + 1; j < 5; j++){
+				if(cardValues[i] == cardValues[j]) pairValue0 = cardValues[i];
+			}
+		}
+		for(int i = 0; i < 4; i++){
+			for(int j = i + 1; j < 5; j++){
+				if(hand1CardValues[i] == hand1CardValues[j]) pairValue1 = hand1CardValues[i];
+			}
+		}
+		if(pairValue0 > pairValue1) return 1;
+		if(pairValue0 < pairValue1) return -1;
+		return compareHighCards(hand1);
+	}
+	
+	public int compareDoublePairs(PokerHand hand1){
+		int hand1CardValues[] = hand1.cardValues();
+		if(this.cardValues[3] > hand1CardValues[3]) return 1;
+		if(this.cardValues[3] < hand1CardValues[3]) return -1;
+		if(this.cardValues[1] > hand1CardValues[1]) return 1;
+		if(this.cardValues[1] < hand1CardValues[1]) return -1;
+		if(this.cardValues[5] > hand1CardValues[5]) return 1;
+		if(this.cardValues[5] < hand1CardValues[5]) return -1;
+		if(this.cardValues[2] > hand1CardValues[2]) return 1;
+		if(this.cardValues[2] < hand1CardValues[2]) return -1;
 		if(this.cardValues[0] > hand1CardValues[0]) return 1;
 		if(this.cardValues[0] < hand1CardValues[0]) return -1;
 		return 0;
