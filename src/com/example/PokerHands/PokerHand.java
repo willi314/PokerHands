@@ -53,6 +53,10 @@ public class PokerHand implements Comparable<PokerHand>{
 		return cardValues[4];
 	}
 	
+	protected int[] cardValues(){
+		return cardValues;
+	}
+	
 	public int hasPairs(){
 		int numberOfPairs = 0;
 		for(int i = 0; i < 4; i++){
@@ -98,7 +102,25 @@ public class PokerHand implements Comparable<PokerHand>{
 	public int compareTo(PokerHand hand1) {
 		if(this.powerLevel > hand1.getPowerLevel()) return 1;
 		if(this.powerLevel < hand1.getPowerLevel()) return -1;
+		if(this.powerLevel == 0) return this.compareHighCards(hand1);
 		return 0;
 	}
+	
+	public int compareHighCards(PokerHand hand1){
+		int hand1CardValues[] = hand1.cardValues();
+		if(this.highCard() > hand1.highCard()) return 1;
+		if(this.highCard() < hand1.highCard()) return -1;
+		if(this.cardValues[3] > hand1CardValues[3]) return 1;
+		if(this.cardValues[3] < hand1CardValues[3]) return -1;
+		if(this.cardValues[2] > hand1CardValues[2]) return 1;
+		if(this.cardValues[2] < hand1CardValues[2]) return -1;
+		if(this.cardValues[1] > hand1CardValues[1]) return 1;
+		if(this.cardValues[1] < hand1CardValues[1]) return -1;
+		if(this.cardValues[0] > hand1CardValues[0]) return 1;
+		if(this.cardValues[0] < hand1CardValues[0]) return -1;
+		return 0;
+	}
+	
+	
 	
 }
