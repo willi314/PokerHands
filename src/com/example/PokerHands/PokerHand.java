@@ -106,6 +106,7 @@ public class PokerHand implements Comparable<PokerHand>{
 		if(this.powerLevel == 1) return this.compareSinglePairs(hand1);
 		if(this.powerLevel == 2) return this.compareDoublePairs(hand1);
 		if(this.powerLevel == 3) return this.compareTriples(hand1);
+		if(this.powerLevel == 4) return this.compareStraights(hand1);
 		return 0;
 	}
 	
@@ -162,6 +163,12 @@ public class PokerHand implements Comparable<PokerHand>{
 		int hand1CardValues[] = hand1.cardValues();
 		if(this.cardValues[2] > hand1CardValues[2]) return 1;
 		return -1;
+	}
+	
+	private int compareStraights(PokerHand hand1){
+		if(this.highCard() > hand1.highCard()) return 1;
+		if(this.highCard() < hand1.highCard()) return -1;
+		return 0;
 	}
 	
 }
