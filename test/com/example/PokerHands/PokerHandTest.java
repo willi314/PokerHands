@@ -105,5 +105,12 @@ public class PokerHandTest {
 		//assertEquals(0, hand4.compareTo(hand0));
 		//assertEquals(1, hand8.compareTo(hand0));
 	}
+	
+	@Test
+	public void compareHandsEachWithThreeOfAKind(){
+		PokerHand hand_0 = new PokerHand("3H 3S 3D 2C 6S");
+		PokerHand hand_1 = new PokerHand("2H 2S 2D 4S 6S");
+		assertEquals(1, hand_0.compareTo(hand_1));
+	}
 
 }
