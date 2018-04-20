@@ -97,6 +97,37 @@ public class PokerHand implements Comparable<PokerHand>{
 	public boolean hasFlush(){
 		return this.hasFlush;
 	}
+	
+	public String toString(){
+		if(this.powerLevel == 0) return "high card: " + this.convertCardValue(this.highCard());
+		if(this.powerLevel == 1) return "single pair: " +  this.convertCardValue(this.pairValue());
+		if(this.powerLevel == 2) return "two pair: " + this.convertCardValue(cardValues[1]) + " and " + this.convertCardValue(cardValues[3]);
+		if(this.powerLevel == 3) return "three of a kind: " + this.convertCardValue(cardValues[2]);
+		if(this.powerLevel == 4) return "straight: " + this.convertCardValue(cardValues[0]) + " to " + this.convertCardValue(cardValues[4]);
+		if(this.powerLevel == 5) return "flush";
+		if(this.powerLevel == 6) return "full house: " + this.convertCardValue(cardValues[2]) + " over " 
+			+ this.convertCardValue((cardValues[2] == cardValues[1]) ? cardValues[3] : cardValues[1]);
+		if(this.powerLevel == 7) return "four of a kind: " + this.convertCardValue(cardValues[2]);
+		if(this.powerLevel == 8) return "straight flush: " + this.convertCardValue(cardValues[0]) + " to " + this.convertCardValue(cardValues[4]);
+		return "";
+	}
+	
+	private int pairValue(){
+		for(int i = 0; i < 4; i++){
+			for(int j = i + 1; j < 5; j++){
+				if(cardValues[i] == cardValues[j]) return cardValues[i];
+			}
+		}
+		return 0;
+	}
+	
+	private String convertCardValue(int cardValue){
+		if(cardValue == 11) return "Jack";
+		if(cardValue == 12) return "Queen";
+		if(cardValue == 13) return "King";
+		if(cardValue == 14) return "Ace";
+		return "" + cardValue;
+	}
 
 	@Override
 	public int compareTo(PokerHand hand1) {
