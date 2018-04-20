@@ -140,5 +140,12 @@ public class PokerHandTest {
 		PokerHand hand_1 = new PokerHand("2D 4D 5D 6D 8D");
 		assertEquals(0, hand_0.compareTo(hand_1));
 	}
+	
+	@Test
+	public void compareHandsEachWithAFullHouse(){
+		PokerHand hand_0 = new PokerHand("3H 3D 3C 6H 6D");
+		PokerHand hand_1 = new PokerHand("2H 2D 2C 6S 6C");
+		assertEquals(1, hand_0.compareTo(hand_1));
+	}
 
 }
